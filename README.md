@@ -1,9 +1,14 @@
 # priority-queue
 > priority queue implementation in golang
 
+[![Build Status](https://travis-ci.org/dannoane/priority-queue.svg?branch=master)](https://travis-ci.org/dannoane/priority-queue)
+
+## Description
+A generic priority queue implementation over a max heap.
+
 ## Usage
 
-```
+```go
 package main
 
 import (

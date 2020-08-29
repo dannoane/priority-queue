@@ -30,6 +30,7 @@ func (heap Heap) Swap(i, j int) {
 	heap[j].index = i
 }
 
+// Push - add an element at the end of the heap
 func (heap *Heap) Push(x interface{}) {
 	n := len(*heap)
 	item := x.(*Element)
@@ -37,6 +38,7 @@ func (heap *Heap) Push(x interface{}) {
 	*heap = append(*heap, item)
 }
 
+// Pop - pop the last element from the heap
 func (heap *Heap) Pop() interface{} {
 	old := *heap
 	n := len(old)
@@ -81,10 +83,12 @@ func (queue *PriorityQueue) Remove(index int) *Element {
 	return heap.Remove(&queue.heap, index).(*Element)
 }
 
+// At - get the element at the specified index from the heap
 func (queue *PriorityQueue) At(index int) *Element {
 	return queue.heap[index]
 }
 
+// Len - return the number of elements in the heap
 func (queue PriorityQueue) Len() int {
 	return queue.heap.Len()
 }
