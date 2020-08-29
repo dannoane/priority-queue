@@ -11,27 +11,27 @@ type Element struct {
 	index    int
 }
 
-// Heap - array of Element pointers that will be transformed in a heap
-type Heap []*Element
+// maxheap - array of Element pointers that will be transformed in a heap
+type maxheap []*Element
 
-/** Heap interface implementation **/
+/** maxheap interface implementation **/
 
-func (heap Heap) Len() int {
+func (heap maxheap) Len() int {
 	return len(heap)
 }
 
-func (heap Heap) Less(i, j int) bool {
+func (heap maxheap) Less(i, j int) bool {
 	return heap[i].Priority > heap[j].Priority
 }
 
-func (heap Heap) Swap(i, j int) {
+func (heap maxheap) Swap(i, j int) {
 	heap[i], heap[j] = heap[j], heap[i]
 	heap[i].index = j
 	heap[j].index = i
 }
 
 // Push - add an element at the end of the heap
-func (heap *Heap) Push(x interface{}) {
+func (heap *maxheap) Push(x interface{}) {
 	n := len(*heap)
 	item := x.(*Element)
 	item.index = n
@@ -39,7 +39,7 @@ func (heap *Heap) Push(x interface{}) {
 }
 
 // Pop - pop the last element from the heap
-func (heap *Heap) Pop() interface{} {
+func (heap *maxheap) Pop() interface{} {
 	old := *heap
 	n := len(old)
 
@@ -56,13 +56,13 @@ func (heap *Heap) Pop() interface{} {
 
 // PriorityQueue - wrapper over the heap implementation
 type PriorityQueue struct {
-	heap Heap
+	heap maxheap
 }
 
 // NewPriorityQueue - creates a new priority queue and initializes the heap
 func NewPriorityQueue() PriorityQueue {
 	priorityQueue := PriorityQueue{}
-	priorityQueue.heap = make(Heap, 0)
+	priorityQueue.heap = make(maxheap, 0)
 	heap.Init(&priorityQueue.heap)
 	return priorityQueue
 }
