@@ -81,6 +81,10 @@ func (queue *PriorityQueue) Remove(index int) *Element {
 	return heap.Remove(&queue.heap, index).(*Element)
 }
 
+func (queue *PriorityQueue) At(index int) *Element {
+	return queue.heap[index]
+}
+
 func (queue PriorityQueue) Len() int {
 	return queue.heap.Len()
 }
