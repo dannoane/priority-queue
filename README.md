@@ -3,6 +3,7 @@
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/dannoane/priority-queue)](https://pkg.go.dev/github.com/dannoane/priority-queue)
 [![Build Status](https://travis-ci.org/dannoane/priority-queue.svg?branch=master)](https://travis-ci.org/dannoane/priority-queue)
+[![Coverage Status](https://coveralls.io/repos/github/dannoane/priority-queue/badge.svg?branch=master)](https://coveralls.io/github/dannoane/priority-queue?branch=master)
 
 ## Description
 A generic priority queue implementation over a max heap.
