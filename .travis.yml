@@ -1,5 +1,10 @@
+os: linux
+dist: focal
 language: go
 go:
     - "1.14"
-scripts:
-    - go test -timeout 30s
+before_script:
+    - go get golang.org/x/tools/cmd/cover
+    - go get github.com/mattn/goveralls
+script:
+    - go test -timeout 30s -v -covermode=count -coverprofile=coverage.out $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-pro -repotoken $COVERALLS_TOKEN
