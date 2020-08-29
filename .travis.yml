@@ -7,4 +7,4 @@ before_script:
     - go get golang.org/x/tools/cmd/cover
     - go get github.com/mattn/goveralls
 script:
-    - go test -timeout 30s -v -covermode=count -coverprofile=coverage.out $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-pro -repotoken $COVERALLS_TOKEN
+    - go test -timeout 30s -v -covermode=count -coverprofile=coverage.out $HOME/gopath/bin/goveralls -service=travis-pro -repotoken $COVERALLS_TOKEN
