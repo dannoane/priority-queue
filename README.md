@@ -1,6 +1,7 @@
 # priority-queue
 > priority queue implementation in golang
 
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/dannoane/priority-queue)](https://pkg.go.dev/github.com/dannoane/priority-queue)
 [![Build Status](https://travis-ci.org/dannoane/priority-queue.svg?branch=master)](https://travis-ci.org/dannoane/priority-queue)
 
 ## Description
