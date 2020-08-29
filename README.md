@@ -23,7 +23,7 @@ func main() {
     pq.Push(&priorityqueue.Element{Value: 2, Priority: 100})
     pq.Push(&priorityqueue.Element{Value: 3, Priority: 300})
 
-    for i := 0; i < pq.Len(); i++ {
+    for !pq.IsEmpty() {
         fmt.Println(pq.Pop().Value)
     }
 }

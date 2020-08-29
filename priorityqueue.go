@@ -92,3 +92,8 @@ func (queue *PriorityQueue) At(index int) *Element {
 func (queue PriorityQueue) Len() int {
 	return queue.heap.Len()
 }
+
+// IsEmpty - returns true if the heap has no elements, false otherwise
+func (queue PriorityQueue) IsEmpty() bool {
+	return queue.heap.Len() == 0
+}
