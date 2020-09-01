@@ -73,9 +73,28 @@ func (queue *PriorityQueue) Push(element *Element) {
 	heap.Push(&queue.heap, element)
 }
 
+// Peek - returns the element with the highest priority from the heap
+func (queue *PriorityQueue) Peek() *Element {
+	return queue.At(0)
+}
+
 // Pop - removes and returns the element with the highest priority from the heap
 func (queue *PriorityQueue) Pop() *Element {
 	return heap.Pop(&queue.heap).(*Element)
+}
+
+// PopLowest - removes and returns the element with the lowest priority from the heap
+func (queue *PriorityQueue) PopLowest() *Element {
+	size := queue.Len()
+	minIndex := size / 2
+
+	for i := size/2 + 1; i < size; i++ {
+		if queue.At(i).Priority < queue.At(minIndex).Priority {
+			minIndex = i
+		}
+	}
+
+	return queue.Remove(minIndex)
 }
 
 // Remove - removes and returns the element at position index from the heap

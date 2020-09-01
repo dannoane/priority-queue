@@ -28,6 +28,24 @@ func TestPush(t *testing.T) {
 	assert(queue.At(1).Value == 1, t, "Element at index 1 should have value 1")
 }
 
+func TestPeek(t *testing.T) {
+	queue := NewPriorityQueue()
+
+	queue.Push(&Element{Value: 1, Priority: 100})
+	elem := queue.Peek()
+	assert(elem.Value == 1, t, "Top element should have value 1")
+	assert(!queue.IsEmpty(), t, "The priority queue should not be empty")
+
+	queue.Push(&Element{Value: 2, Priority: 200})
+	elem = queue.Peek()
+	assert(elem.Value == 2, t, "Top element should have value 2")
+	assert(!queue.IsEmpty(), t, "The priority queue should not be empty")
+
+	queue.Push(&Element{Value: 3, Priority: -100})
+	elem = queue.Peek()
+	assert(elem.Value != 3, t, "Top element should have value 2")
+}
+
 func TestPop(t *testing.T) {
 	queue := NewPriorityQueue()
 	queue.Push(&Element{Value: 1, Priority: 10})
@@ -36,10 +54,24 @@ func TestPop(t *testing.T) {
 	queue.Push(&Element{Value: 4, Priority: -12})
 
 	assert(queue.Pop().Value == 3, t, "First element to be removed should have value 3")
-	assert(queue.Pop().Value == 1, t, "Second element to be removed should have value 2")
-	assert(queue.Pop().Value == 2, t, "Third element to be removed should have value 1")
+	assert(queue.Pop().Value == 1, t, "Second element to be removed should have value 1")
+	assert(queue.Pop().Value == 2, t, "Third element to be removed should have value 2")
 	assert(queue.Pop().Value == 4, t, "Fourth element to be removed should have value 4")
 	assert(queue.Len() == 0, t, "Priority queue length should be 0, not %d", queue.Len())
+}
+
+func TestPopLowest(t *testing.T) {
+	queue := NewPriorityQueue()
+	queue.Push(&Element{Value: 1, Priority: 10})
+	queue.Push(&Element{Value: 2, Priority: 3})
+	queue.Push(&Element{Value: 3, Priority: 15})
+	queue.Push(&Element{Value: 4, Priority: -12})
+
+	assert(queue.PopLowest().Value == 4, t, "First element to be removed should have value 4")
+	assert(queue.PopLowest().Value == 2, t, "Second element to be removed should have value 2")
+	assert(queue.PopLowest().Value == 1, t, "Third element to be removed should have value 1")
+	assert(queue.PopLowest().Value == 3, t, "Fourth element to be removed should have value 3")
+	assert(queue.IsEmpty(), t, "Priority queue length should be 0, not %d", queue.Len())
 }
 
 func TestRemove(t *testing.T) {
